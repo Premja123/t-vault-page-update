@@ -1,0 +1,394 @@
+form{
+    position: fixed;
+}
+
+.newsafe_container{
+    height:47rem;
+     width:43rem;
+     position: fixed;
+     margin-top: 6rem;
+     margin-left: 38rem;
+     top: 0;
+     left:0;
+     background-image: linear-gradient(to top, #151820, #2c3040);
+}
+
+.newsafe_container h2{
+    font-family: Roboto;
+    color:white;
+    padding-top:1rem;
+    padding-left: 2.5rem;
+    padding-bottom: 1rem;
+    margin: 0rem;
+    font-size: 24px;
+}
+
+
+
+.create_page_logo{
+    padding-left: 2.5rem;
+    padding-top: 0.5rem;
+
+}
+
+.add_button_1{
+position: fixed;
+margin-top: 35rem;
+right:0;
+margin-right: 64rem;
+
+}
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+ 
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+.bottom_container{
+height:33rem;
+overflow-y:scroll;
+overflow-x: hidden;
+}
+
+.bottom_child{
+    height:60rem;
+   
+}
+
+.bottom_container::-webkit-scrollbar {
+    display: none;
+  }
+
+
+.iconsafe{
+    display: flex;
+    justify-content: space-between;
+    color:#c4c4c4;
+    width:90%;
+}
+
+.safe_paragraph{
+    padding-left: 1rem;
+    font-size: 12px;
+}
+
+.safe_name{
+    padding-left: 2.5rem;
+    color:white;
+    padding-top:0.5rem;
+}
+.name_input{
+    margin-left: 2.5rem;
+    padding: 0.7rem;
+    outline: none;
+    width:80%;
+}
+
+.Owner_name{
+    padding-left: 2.5rem;
+    color:white;
+    padding-top:0.5rem;
+}
+.owner_input{
+    margin-left: 2.5rem;
+    padding: 0.7rem;
+    outline: none;
+    width:80%;
+}
+
+.type_of_block{
+    padding-left: 2.5rem;
+    color:white;
+    padding-top:0.5rem;
+}
+.select_thing{
+    margin-left: 2.5rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    outline: none;
+    width:83.5%;
+}
+
+
+.description_area{
+    color:white;
+    padding-left: 2.5rem;
+    margin:0rem;
+}
+
+.textarea_description{
+    margin-left: 2.5rem;
+    padding: 0.7rem;
+    margin-top: 1rem;
+    outline: none;
+    width:80.5%;
+}
+
+.condition{
+    color:#8b8ea6;
+    padding-left: 2.5rem;
+}
+
+.buttons{
+    padding-top: 1rem;
+}
+.cancel_button{
+    color: #e20074;
+  
+    margin-left: 26.5rem;
+    padding: 0.2rem 1rem;
+}
+
+.create_button{
+    background-color:#8b8ea6;
+    outline: none;
+    border: none;
+    color: white;
+    margin-left: 0.5rem;
+    padding: 0.3rem 1rem;
+}
+.create_button_rose{
+    background-color: #e20074;
+    outline: none;
+    border: none;
+    color: white;
+    margin-left: 0.5rem; 
+    padding: 0.3rem 1rem;
+}
+.create_button_grey{
+    background-color:#8b8ea6;;
+    outline: none;
+    border: none;
+    color: white;
+    margin-left: 0.5rem; 
+    padding: 0.3rem 1rem;
+}
+
+.displayed_items{
+    list-style: none;
+   outline: none;
+}
+.button_block{
+    position: fixed;
+}
+
+.card_list{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #72134b, #1d212c);
+    height:5rem;
+    padding-right: 1rem;
+}
+
+.folder_icon_top{
+    display: flex;
+    align-items: center;
+}
+
+.icon_con_2{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #72134b, #1d212c);
+}
+
+.list_1{
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+   margin-left: 0.4rem;
+    outline: none;
+    display: flex;
+    align-items: center;
+   justify-content: space-between;
+    background: linear-gradient(to right, #72134b, #1d212c);
+    list-style: none;
+    border: none;
+    width:218%;
+   padding-left: 1rem;
+   color: white;
+}
+
+
+.popup-overlay{
+    background-color: rgba(0,0,0,0.7);
+}
+
+.popup-arrow{
+    display: none;
+}
+
+.task_button{
+    width:20px;
+    height:20px;
+}
+
+
+
+.add_button_bottom{
+    position: fixed;
+    margin-top: 25rem;
+    margin-left: 21rem;
+    }
+    
+    
+    .folder_pop{
+        position:fixed;
+        left:0;
+        top:0;
+        height:42%;
+        margin-top: 17rem;
+        margin-left: 27rem;
+        width:50%;
+        background: #2a2e3e;
+    }
+    
+    .add_folder{
+        color:white;
+        font-family: "Roboto", sans-serif;
+        font-weight: none;
+        margin-left: 3rem;
+        margin-top: 4.5rem;
+    }
+    
+    .folder_name{
+        color:white;
+        margin-left: 3rem;
+        margin-top: 2.5rem;
+    }
+    
+    .folder_name_text{
+        padding:1rem;
+        outline: none;
+        width:85%;
+    }
+    .folder_para{
+        color: #8b8ea6;
+        margin-left: 3rem;
+    }
+    .folder_button{
+        margin-top: 3.5rem;
+        margin-left: 40rem;
+    }
+    .save_before{
+        padding:0.5rem 1rem;
+        margin-left: 0.5rem;
+        background: #454c5e;
+        color:white;
+        outline: none;
+        border: none;
+    }
+    
+    .save_after{
+        padding:0.5rem 1rem;
+        margin-left: 0.5rem;
+        background:#e20074;
+        color:white;
+        outline: none;
+        border: none;
+    }
+    
+    .cancel{
+        padding:0.5rem 1rem;
+        color:#e20074;
+        font-weight: bold;
+        outline: none;
+        border: none;
+    }
+    
+    .card_list_folder{
+        display: flex;
+    align-items: center;
+    }
+    
+    .list_1_folder{
+      padding-top: 1.5rem;
+      padding-bottom: 1rem;
+      margin-left: 0.6rem;
+      outline: none;
+      display: flex;
+      align-items: center;
+     justify-content: space-between;
+      background: linear-gradient(to right, #72134b, #1d212c);
+      list-style: none;
+      border: none;
+      width:280%;
+     padding-left: 1rem;
+     color: white;
+    }
+    
+    .add_list_folder{
+    list-style: none;
+    align-items: center;
+    }
+    
+    .delete_complete_button{
+        margin-left: 24rem;
+    }
+    
+    .delete_complete_button{
+        width:20px;
+        height:20px;
+    }
+    .icon_flex{
+        display: flex;
+        align-items: center;
+        height:5rem;
+        background: linear-gradient(to right, #72134b, #1d212c);
+    }
+    
+    .top_folder{
+        position: fixed;
+        margin-left: 43rem;
+        margin-top:21.5rem;
+        top:0;
+    }
+    .folder_icon_top{
+    padding-left: 1rem;
+    }
+
+
+    .delete_button_folder{
+        width:20px;
+        height:20px;
+    }
+
+    .listing_all_folder{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .input_first_folder{
+        display: flex;
+        align-items: center;
+    }
+
+   .input_first_folder h2{
+    padding-left: 2rem;
+   }
+
+   .delete_button_folder{
+    padding-right: 3rem;
+   }
+
+.listing_all_folder:hover{
+   background: linear-gradient(to right, #72134b, #1d212c);
+}
+.listing_all:hover{
+    background: linear-gradient(to right, #72134b, #1d212c);
+ }
