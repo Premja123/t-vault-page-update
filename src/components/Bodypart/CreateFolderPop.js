@@ -4,11 +4,14 @@ import './createform.css';
 import Add from './add.png';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addUser} from '../features/Users';
+import { addUserfolder } from '../features/Users';
 import FolderPlus from './folder-plus 1.png';
+import { v4 as uuid } from "uuid";
 
 export default function CreateFolderPop() {
     const[name,setName]=useState("");
+    const uid = uuid();
+    const id = uid.slice(0, 6);
     
   const dispatch=useDispatch();
 
@@ -35,11 +38,6 @@ export default function CreateFolderPop() {
 <div className='folder_button'>
     <button className='cancel' onClick={()=>{closing();}}>Cancel</button>
 
-    {/* <button type="submit" className='save_before'>Save</button> */}
-
-    {/* <button type="submit" className='save_after'>Save</button> */}
-
-    
     {
           name.length<=10 &&
           <button type="submit" className="save_before"  onClick={()=>{closing();}}>Save</button>
@@ -48,13 +46,12 @@ export default function CreateFolderPop() {
 
 {
   name.length>10 &&
-    <button type="submit" className="save_after" onClick={()=>{dispatch(addUser({
-      id:(new Date()).getTime(),
+    <button type="submit" className="save_after" onClick={()=>{dispatch(addUserfolder({
+      id:id,
       name,
-    }))
+    }));
   
     closing();
-
     setName(' ');
 
     }} 

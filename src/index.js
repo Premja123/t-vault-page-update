@@ -10,7 +10,7 @@ import usersReducer from './components/features/Users';
 const store=configureStore({
   reducer:{
     users:usersReducer,
-
+    users1:usersReducer,
   },
 });
 

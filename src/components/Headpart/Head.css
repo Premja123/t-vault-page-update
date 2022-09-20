@@ -331,26 +331,29 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #1d212c;
     /* width:10rem; */
   }
-  .listing_all h2{
-    padding-left: 2rem;
+  .listing_all p{
+    padding-left: 1.5rem;
   }
   .banner_button{
-    width:40px;
-    height:40px;
+    width:30px;
+    height:30px;
     padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.7rem;
   }
 
   .edit_button{
-    width:20px;
-    height:20px;
+    width:15px;
+    height:15px;
     /* padding-left: 12rem; */
   }
 
   .delete_button{
-    width:20px;
-    height:20px;
+    width:15px;
+    height:15px;
     padding-left: 2rem;
     padding-right: 2rem;
 
@@ -360,6 +363,13 @@ header {
     display: flex;
     align-items: center;
   }
+
+  .input_first p{
+  padding: 0.5rem 0.5rem 1rem 1rem;
+  font-weight: bold;
+
+  }
+
  .input_second{
     display: flex;
     align-items: center;

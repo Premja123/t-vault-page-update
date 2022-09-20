@@ -6,12 +6,16 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser} from '../features/Users';
 import { useState } from 'react';
+import { v4 as uuid } from "uuid";
 
 export default function CreateNewSafe() {
 
+  // const[count,setCount]=useState(0);
+  const uid = uuid();
+  const id = uid.slice(0, 6);
   const[name,setName]=useState("");
   const[username,setUsername]=useState("");
-
+  const [type, setType] = useState("");
   const[description,setDescription]=useState("");
 
   const dispatch=useDispatch();
@@ -38,17 +42,19 @@ export default function CreateNewSafe() {
         </div> 
         <div>
         <p className="safe_name">Safe Name</p>
-        <input className="name_input" name="safename" type="text" placeholder="Safe Name" onChange={(event)=>{setName(event.target.value);}} ></input>
+        <input className="name_input"   id="safeNameInput" name="safeName" type="text" placeholder="Safe Name"  value={name} onChange={(event)=>{setName(event.target.value);}} ></input>
         </div>
         <p className="Owner_name">Owner</p>
-        <input className="owner_input" name="owner" type="text" placeholder="Owner"  onChange={(event)=>{setUsername(event.target.value);}}></input>
+        <input className="owner_input" id="ownerInput" name="owner" type="text" placeholder="Owner" value={username} onChange={(event)=>{setUsername(event.target.value);}}></input>
         <p className="type_of_block">Type</p>
-        <select className="select_thing">
-            <option>Personal</option>
-            <option>Other</option>
+        <select className="select_thing" id="typeInput" value={type} onChange={(e) => {
+              setType(e.target.value);
+            }} >
+            <option value="Personal">Personal</option>
+            <option value="Other">Other</option>
         </select>
         <p className="description_area">Description</p>
-        <textarea rows="3" cols="50" name="description" className="textarea_description" placeholder="Description" onChange={(event)=>{setDescription(event.target.value);}} ></textarea>
+        <textarea id="descInput" rows="3" cols="50" name="description" className="textarea_description" placeholder="Description"  value={description} onChange={(event)=>{setDescription(event.target.value);}} ></textarea>
         <p className="condition">Please add a minimum of 10 characters</p>
         <div>
         <div className="buttons"> 
@@ -63,20 +69,21 @@ export default function CreateNewSafe() {
 {
   (name.length>10 && username.length>10 && description.length>10) &&
     <button type="submit" className="create_button_rose" onClick={()=>{dispatch(addUser({
-      id:(new Date()).getTime(),
+      id:id,
       name,
       username,
+      type,
       description,
     }))
-  
-    close();
 
+    close();
     setName(' ');
     setUsername(' ');
-    description(' ');
+    setType(' ');
+    setDescription(' ');
 
     }} 
-    >+ Create</button>
+     >+ Create</button>
 
   }
         </div>
