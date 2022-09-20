@@ -3,11 +3,15 @@ import Search from "./search.png";
 import Arrow from "./arrow.png";
 import Icon from './icon_image.png';
 import Delete from './delete-xxl.png';
+import System from './System.png';
 import Banner_img from "./Banner_img.png";
 import IconFolder from './icon_folder.png';
+import Circle from "./circle.png";
+import Uparrow from "./uparrow.png";
 import CreateNewSafe from "../Bodypart/CreateNewSafe";
 import CreateFolderPop from "../Bodypart/CreateFolderPop";
 import { deleteUser,deleteUserfolder} from "../features/Users";
+import One_finger from "./one-finger-xxl.png";
 import { useDispatch } from 'react-redux';
 // import {v4 as uuidV4} from "uuid";
 //import CreateFolderPop from "../FolderRight/CreateFolderPop";
@@ -31,7 +35,7 @@ export default function Safes() {
   return (
     <div className="safes">
     <div className="safes_left_container">
-    
+   
       <div className="container_1">
         <div className="all_safes">
           <div>
@@ -43,19 +47,53 @@ export default function Safes() {
             <img src={Arrow} alt="arrow"></img>
           </div>
         </div>
+       
+       
         <div className="searching">
           <img src={Search} alt="search_button" />
           <input type="search" placeholder="Search"></input>
         </div>
       </div>
+
+
+      <div className="container_second">
+      {
+            (userList.length<=0)&&
+            <div>
+            <img src={System} className="system" alt="system_logo"></img>
+            <div className="create_para">Create a Safe to get Started</div>
+          {/* <div className="foot_part">
+                <div className="circle">
+                  <div className="red_circle">
+                    <div className="one_finger">
+                      <img src={One_finger} alt="one_finger"></img>
+                    </div>
+                  </div>
+                </div>
+                <div className="uparrow">
+                  <img src={Uparrow} alt="uparrow" />
+                </div>
+                <div className="add_box">
+                  <p>Create New Safe</p>
+                </div>
+              </div> */}
+    
+              </div>
+            
+          }
+        <CreateNewSafe/>
+        
+        </div>
+       
+
       <div>
         <p></p>
-        <CreateNewSafe/>
+        
 
       </div>
+
       <div className="bottom_container">
         <div className="bottom_child">
-          
         {
 
 
@@ -137,7 +175,15 @@ userList.map((user)=>{
       </div>
   
 <div>
+
 <CreateFolderPop/>
+
+
+
+
+
+
+
 {/* {
 userList.map((user,user1)=>{
         return(

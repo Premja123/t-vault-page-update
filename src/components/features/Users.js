@@ -16,6 +16,10 @@ state.value.push(action.payload);
           addUserfolder:(state, action)=>{
             state.value1.push(action.payload);
                       },
+
+
+                     
+
           updateSafe: (state, action) => {
             state.value.forEach((safe,index) =>{
            

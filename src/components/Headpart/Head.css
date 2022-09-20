@@ -140,7 +140,7 @@ header {
     background-image: linear-gradient(to top, #151820, #2c3040);
   }
   
-  .container_second img {
+  .system {
     width: 300px;
     height: 250px;
     margin: 80px 100px 0px 70px;
@@ -374,3 +374,4 @@ header {
     display: flex;
     align-items: center;
   }
+

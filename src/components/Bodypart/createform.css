@@ -33,9 +33,9 @@ form{
 
 .add_button_1{
 position: fixed;
-margin-top: 35rem;
+margin-top: 1rem;
 right:0;
-margin-right: 64rem;
+margin-right: 78.5rem;
 
 }
 
@@ -393,4 +393,8 @@ overflow-x: hidden;
 }
 .listing_all:hover{
     background: linear-gradient(to right, #72134b, #1d212c);
+ }
+
+ .add_button_update{
+    margin-top: 20rem;
  }
