@@ -6,29 +6,35 @@ import Delete from './delete-xxl.png';
 import System from './System.png';
 import Banner_img from "./Banner_img.png";
 import IconFolder from './icon_folder.png';
-import Circle from "./circle.png";
-import Uparrow from "./uparrow.png";
+// import Circle from "./circle.png";
+// import Uparrow from "./uparrow.png";
+import File_img from "./file_img.png";
 import CreateNewSafe from "../Bodypart/CreateNewSafe";
 import CreateFolderPop from "../Bodypart/CreateFolderPop";
-import { deleteUser,deleteUserfolder} from "../features/Users";
-import One_finger from "./one-finger-xxl.png";
+import { deleteUser, setCurId} from "../features/Users";
+// import One_finger from "./one-finger-xxl.png";
 import { useDispatch } from 'react-redux';
+import { removeSecret } from "../features/Users";
 // import {v4 as uuidV4} from "uuid";
 //import CreateFolderPop from "../FolderRight/CreateFolderPop";
 import {useSelector } from "react-redux";
+// import {useState} from 'react';
 import EditPop from "../Bodypart/EditPop";
 
 
 export default function Safes() {
-
-  // const[count,setCount]=useState(0);
+//const [count,setUpdate]=useState(0);
+//const[count,setCount]=useState(0);
 // function countincrease(){
 //   setCount(count+1);
 // }
 
+const curId = useSelector((state) => state.users.curId);
+
   const dispatching=useDispatch();
   const userList=useSelector((state)=>state.users.value);
-  const userListing=useSelector((state)=>state.users.value1);
+  const secretList = useSelector((state) => state.users.value);
+  // const userListing=useSelector((state)=>state.users.value1);
 
 // const[count,setCount]=useState(0);
 
@@ -40,7 +46,7 @@ export default function Safes() {
         <div className="all_safes">
           <div>
             <p>
-              All Safes <span>()</span>
+              All Safes <span>({userList.length})</span>
             </p>
           </div>
           <div>
@@ -55,14 +61,7 @@ export default function Safes() {
         </div>
       </div>
 
-
-      <div className="container_second">
-      {
-            (userList.length<=0)&&
-            <div>
-            <img src={System} className="system" alt="system_logo"></img>
-            <div className="create_para">Create a Safe to get Started</div>
-          {/* <div className="foot_part">
+  {/* <div className="foot_part">
                 <div className="circle">
                   <div className="red_circle">
                     <div className="one_finger">
@@ -77,11 +76,20 @@ export default function Safes() {
                   <p>Create New Safe</p>
                 </div>
               </div> */}
-    
+
+
+
+
+      <div className="container_second">
+      {
+            (userList.length<=0)&&
+            <div>
+            <img src={System} className="system" alt="system_logo"></img>
+            <div className="create_para">Create a Safe to get Started</div>
               </div>
             
           }
-        <CreateNewSafe/>
+        <CreateNewSafe userList={userList}/>
         
         </div>
        
@@ -99,6 +107,9 @@ export default function Safes() {
 
 userList.map((user)=>{
         return(
+          <div key={user.id} className={user.id === curId.id ? "Activeone" : "NoActive"} 
+          onClick={()=>{dispatching(setCurId({id:user.id,}));}}
+          >
           <div  className="listing_all">
             <div className="input_first">
             <img src={Icon} className="banner_button" alt="icon"></img>
@@ -114,6 +125,7 @@ userList.map((user)=>{
          description={user.description}
          />
           <img src={Delete} className="delete_button" alt="delete" onClick={()=>{dispatching(deleteUser({id:user.id}));}}></img>
+          </div>
           </div>
           </div>
         );
@@ -163,24 +175,59 @@ userList.map((user)=>{
                     <div className="for_focus">
             <p>Add Folder</p>
           </div>
-        
+          
           <div>
             {/* <img src={Folder} alt="fold_img" /> */}
           </div>
          
         </div>
       </div>
+      <p>
+      <span id="secretsCount"></span>
+      {/* {secretList.length} Secrets */}
+      </p>
       <div>
         <p></p>
       </div>
   
 <div>
 
-<CreateFolderPop/>
+{
+            (secretList.length<=0) &&
+            <div>
+        <div className="total_container">
+          <div className="file_document">
+            <img src={File_img} alt="file_img"></img>
+          </div>
+
+
+          <div>
+            <p className="caption">
+              {" "}
+              Add a<span className="highlight"> Folder</span>
+              and then you’ll be able to
+            </p>
+            <p className="caption">
+              add <span className="highlight"> Secrets </span>
+              to view them all here{" "}
+            </p>
+          </div>
+
+          <div className="add_button">
+           
+
+          </div>
+        </div>
+              </div>
+            
+          }
+<CreateFolderPop curId={curId.id} />
 
 
 
 
+
+{/* activeId={activeId.id} */}
 
 
 
@@ -200,13 +247,14 @@ userList.map((user,user1)=>{
       })
      } */}
 
-{
-userListing.map((user1)=>{
+
+{/* {
+secretList.map((value,index)=>{
         return(
           <div  className="listing_all">
             <div className="input_first">
             <img src={IconFolder} className="banner_button" alt="icon"></img>
-          <p>{user1.name}</p>
+          <p>{user.name}</p>
          </div>
          <div  className="input_second">
           <img src={Delete} className="delete_button" alt="delete" onClick={()=>{dispatching(deleteUserfolder({id:user1.id}));}} ></img>
@@ -214,7 +262,58 @@ userListing.map((user1)=>{
           </div>
         );
       })
-     }
+     } */}
+
+{/* <div className="secrets"> */}
+
+
+
+
+        {secretList.map((value, index) => {
+          return value.id === curId.id ? (
+            <div key={index}>
+              {value.secret.map((x, index) => {
+                return (
+                  <div key={index} className="secretList">
+                    <div className="secretName">
+                      <div className="folderIcon">
+                        <img className="banner_button_folder" src={IconFolder}  alt="" />
+                        {/* <img
+                          className="folderActive"
+                          src={folderActive}
+                          alt=""
+                        /> */}
+                      </div>
+                      <div className="secretDetails">
+                        <p>{x}</p>
+                        {/* <span id="lastUpdated">Last Updated: a day ago</span> */}
+                      </div>
+                    </div>
+                    <div className="remove">
+                    <img src={Delete} className="delete_button" alt="delete"
+                        onClick={() =>
+                          dispatching(
+                            removeSecret({
+                              id: x,
+                            })
+                          )
+                        }
+                        />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            ""
+          );
+        })}
+      {/* </div> */}
+
+
+
+
+
 
 </div>
 

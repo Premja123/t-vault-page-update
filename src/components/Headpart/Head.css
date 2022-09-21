@@ -327,11 +327,17 @@ header {
     justify-content: center;
   }
   
+.Activeone{
+background-image: linear-gradient(to right, #72134b, #1d212c);
+}
+.NoActive{
+  background-color:  #1d212c;
+}
+
   .listing_all{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #1d212c;
     /* width:10rem; */
   }
   .listing_all p{
@@ -375,3 +381,38 @@ header {
     align-items: center;
   }
 
+  .secretList{
+    display: flex;
+    justify-content: space-between;
+    background-color: #1d212c;
+    align-items: center;
+  }
+
+  .secretName{
+    display: flex;
+  }
+
+  .secretDetails{
+    padding-left: 1.5rem;
+  }
+
+  .banner_button_folder{
+    padding-top: 0.5rem;
+    padding-bottom: 0.3rem;
+  }
+
+
+  .add_button_1{
+    top:0;
+    position: fixed;
+    margin-top: 45rem;
+    margin-left:15rem;
+    
+}
+
+.add_button_update{
+    bottom:0;
+    position: fixed;
+    margin-top: 5rem;
+    margin-left:30rem;
+}

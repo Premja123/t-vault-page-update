@@ -4,31 +4,33 @@ import Popup from 'reactjs-popup'
 import Circle from "./circle.png";
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addUser} from '../features/Users';
+import { addUser, setCurId} from '../features/Users';
 import { useState } from 'react';
 import { v4 as uuid } from "uuid";
 
 export default function CreateNewSafe() {
 
-  // const[count,setCount]=useState(0);
+
   const uid = uuid();
   const id = uid.slice(0, 6);
   const[name,setName]=useState("");
   const[username,setUsername]=useState("");
   const [type, setType] = useState("");
+  // const[active,setActive]=useState(false);
   const[description,setDescription]=useState("");
+  const [secret] = useState([]);
 
   const dispatch=useDispatch();
 
   const[blankpage,setBlankpage]=useState('add_button_1');
-  const update_blank=()=>{
-    setBlankpage('add_button_update')
+  const updateBlank=()=>{
+    setBlankpage('add_button_update');
   }
 
   return (
     <div>
           <form>
-    <Popup trigger={<img src={Circle} className={blankpage} alt="circle" onClick={update_blank}></img>}>
+    <Popup trigger={<img src={Circle} alt="circle" className={blankpage}  onClick={updateBlank}></img>}>
    {close=>(
     <form>
     <div className="newsafe_container" >
@@ -79,8 +81,15 @@ export default function CreateNewSafe() {
       username,
       type,
       description,
-    }))
-
+      secret:secret,
+      // active:active,
+    }));
+    dispatch(
+      setCurId({
+        id: id,
+      })
+    );
+    
     close();
     setName(' ');
     setUsername(' ');
@@ -89,7 +98,6 @@ export default function CreateNewSafe() {
 
     }} 
      >+ Create</button>
-
   }
         </div>
     </div>

@@ -1,25 +1,36 @@
 import React from 'react'
 import Popupfirst from 'reactjs-popup';
 import './createform.css';
-import Add from './add.png';
+import Add from './add_button_after.png';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addUserfolder } from '../features/Users';
-import FolderPlus from './folder-plus 1.png';
+import { addSecret} from '../features/Users';
+import FolderPlus from './folder_update.png';
 import { v4 as uuid } from "uuid";
 
-export default function CreateFolderPop() {
-    const[name,setName]=useState("");
+export default function CreateFolderPop(props) {
+    // const[name,setName]=useState("");
     const uid = uuid();
     const id = uid.slice(0, 6);
-    
+    const [secret, setSecret] = useState([]);
   const dispatch=useDispatch();
+
+  const[blankpage,setBlankpage]=useState('add_button_bottom');
+  const updateBlank=()=>{
+    setBlankpage('add_button_bottom_update');
+  }
+
+  const[blankpagefolder,setBlankpagefolder]=useState('top_folder');
+  const updateBlankfolder=()=>{
+    setBlankpagefolder('top_folder_update');
+  }
 
   return (
     <div>
          <form>
-      <Popupfirst trigger={<div><img src={Add} className="add_button_bottom" alt="add"/> 
-    <img src={FolderPlus} alt="folderplus" className='top_folder'></img></div>} >
+      <Popupfirst trigger={<div><img src={Add} className={blankpage} alt="add" onClick={updateBlank}/> 
+    <img src={FolderPlus} alt="folderplus" className={blankpagefolder} onClick={updateBlankfolder}></img></div>} >
+
        {closing=>(
             <form>
               <div>
@@ -29,7 +40,7 @@ export default function CreateFolderPop() {
         </div>
         <div className='folder_name'>
             <p>Folder Name</p>
-            <input className="folder_name_text" type="text" placeholder='Folder Name' onChange={(event)=>{setName(event.target.value);}}></input>
+            <input className="folder_name_text" type="text" placeholder='Folder Name' onChange={(event)=>{setSecret(event.target.value);}}></input>
         </div>
 
         <div className='folder_para'>
@@ -39,20 +50,23 @@ export default function CreateFolderPop() {
     <button className='cancel' onClick={()=>{closing();}}>Cancel</button>
 
     {
-          name.length<=10 &&
+          secret.length<=10 &&
           <button type="submit" className="save_before"  onClick={()=>{closing();}}>Save</button>
 
         }
 
 {
-  name.length>10 &&
-    <button type="submit" className="save_after" onClick={()=>{dispatch(addUserfolder({
-      id:id,
-      name,
-    }));
-  
+  secret.length>10 &&
+    <button type="submit" className="save_after"  onClick={() => {
+      dispatch(
+        addSecret({
+          curId: props.curId,
+          secret: secret,
+          id:id,
+        })
+      );
     closing();
-    setName(' ');
+    setSecret(' ');
 
     }} 
     >Save</button>
