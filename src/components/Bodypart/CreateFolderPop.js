@@ -28,7 +28,9 @@ export default function CreateFolderPop(props) {
   return (
     <div>
          <form>
-      <Popupfirst trigger={<div><img src={Add} className={blankpage} alt="add" onClick={updateBlank}/> 
+         {/* onClick={updateBlank} className={blankpage} */}
+
+      <Popupfirst trigger={<div><img src={Add}  alt="add"  onClick={updateBlank} className={blankpage} /> 
     <img src={FolderPlus} alt="folderplus" className={blankpagefolder} onClick={updateBlankfolder}></img></div>} >
 
        {closing=>(
@@ -62,7 +64,7 @@ export default function CreateFolderPop(props) {
         addSecret({
           curId: props.curId,
           secret: secret,
-          id:id,
+           id:id,
         })
       );
     closing();

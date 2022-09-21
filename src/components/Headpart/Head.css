@@ -22,7 +22,7 @@ header {
     text-decoration: none;
     color: #fff;
     padding: 2rem 0.5rem 2.09rem 0.5rem;
-    font-weight: bold;
+    /* font-weight: bold; */
   }
   
   .nav_center {
@@ -66,12 +66,14 @@ header {
     padding-left: 0.8rem;
     padding-right: 1rem;
     padding-bottom: 0.4rem;
-    font-weight: bold;
+    padding-top: 0.2rem;
+    /* font-weight: bold; */
   }
   .arrow img {
     width: 12px;
     height: 12px;
-    padding-bottom: 0.01rem;
+    padding-top: 0.3rem;
+    /* padding-bottom: 0.01rem; */
   }
   
   .container_1 {
@@ -229,9 +231,10 @@ header {
     padding-top: 0rem;
   }
   .total_card{
-    position: absolute;
+    position: fixed;
+    top:0;
     padding-left: 15rem;
-    padding-top: 3rem;
+    padding-top: 12.5rem;
     font-size: 18px;
     font-size:20px;
   };
@@ -247,6 +250,15 @@ header {
     font-family: Helvetica;
   }
   
+.description_next{
+  color:#c4c4c4;
+  font-size: 12px;
+  position: absolute;
+  top:0;
+  padding-top: 15.5rem;
+  padding-left: 15rem;
+}
+
   .nav_2 {
     display: flex;
     justify-content: space-between;
@@ -372,7 +384,6 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
 
   .input_first p{
   padding: 0.5rem 0.5rem 1rem 1rem;
-  font-weight: bold;
 
   }
 
@@ -399,20 +410,36 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
   .banner_button_folder{
     padding-top: 0.5rem;
     padding-bottom: 0.3rem;
+    padding-left: 1.5rem;
   }
 
 
-  .add_button_1{
+/* .add_button_update{
+ 
     top:0;
     position: fixed;
-    margin-top: 45rem;
-    margin-left:15rem;
-    
+    margin-left:30rem;
+}
+ */
+
+  
+/* .add_button_bottom_update{
+  margin-top: 23rem;
+
+  top:0;
+  width:50px;
+  height:25px;
+  margin-left:21.5rem;
+} */
+
+
+.add_button_bottom_update{
+  display: none;
 }
 
-.add_button_update{
-    bottom:0;
-    position: fixed;
-    margin-top: 5rem;
-    margin-left:30rem;
+.secretsCount{
+  color:white;
+  font-weight: bolder;
+  position: absolute;
+  top:0;
 }

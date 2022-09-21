@@ -22,15 +22,17 @@ export default function CreateNewSafe() {
 
   const dispatch=useDispatch();
 
+
   const[blankpage,setBlankpage]=useState('add_button_1');
   const updateBlank=()=>{
-    setBlankpage('add_button_update');
+    setBlankpage('add_buttonupdating');
   }
+
 
   return (
     <div>
-          <form>
-    <Popup trigger={<img src={Circle} alt="circle" className={blankpage}  onClick={updateBlank}></img>}>
+          <div>
+    <Popup trigger={<div><img src={Circle} alt="circle" className={blankpage} onClick={updateBlank}></img></div>}>
    {close=>(
     <form>
     <div className="newsafe_container" >
@@ -52,7 +54,7 @@ export default function CreateNewSafe() {
         <input className="name_input"   id="safeNameInput" name="safeName" type="text" placeholder="Safe Name"  value={name} onChange={(event)=>{setName(event.target.value);}} ></input>
         </div>
         <p className="Owner_name">Owner</p>
-        <input className="owner_input" id="ownerInput" name="owner" type="text" placeholder="Owner" value={username} onChange={(event)=>{setUsername(event.target.value);}}></input>
+        <input className="owner_input" id="ownerInput" name="username" type="text" placeholder="Owner" value={username} onChange={(event)=>{setUsername(event.target.value);}}></input>
         <p className="type_of_block">Type</p>
         <select className="select_thing" id="typeInput" value={type} onChange={(e) => {
               setType(e.target.value);
@@ -109,7 +111,7 @@ export default function CreateNewSafe() {
   )}
    </Popup> 
 
-          </form>
+          </div>
     </div>
   )
 }

@@ -3,26 +3,33 @@ import './createform.css';
 import Popup from 'reactjs-popup'
 import React from 'react';
 import Edit from './edit-xxl.png';
-import { useState,useEffect } from 'react';
+import { useState} from 'react';
 import { updateSafe } from '../features/Users';
 import { useDispatch } from 'react-redux';
 
 export default function EditPop(props) {
 
-    const [id, setId] = useState("");
-    const [name, setName] = useState("");
+    // const [id, setId] = useState("");
+    // const [name, setName] = useState("");
+    // // const [owner, setOwner] = useState("");
+    // const[username,setUsername]=useState("");
+    // const [type, setType] = useState("");
+    // const [description, setDescription] = useState("");
+
+    const [id] = useState(props.id);
+    const [name, setName] = useState(props.name);
     // const [owner, setOwner] = useState("");
-    const[username,setUsername]=useState("");
-    const [type, setType] = useState("");
-    const [description, setDescription] = useState("");
-  
-    useEffect(() => {
-      setId(props.id);
-      setName(props.name);
-      setUsername(props.owner);
-      setType(props.type);
-      setDescription(props.description);
-    },[props.id,props.name,props.owner,props.type,props.description]);
+    const[username,setUsername]=useState(props.username);
+    const [type, setType] = useState(props.type);
+    const [description, setDescription] = useState(props.description);
+    const [secret] = useState(props.secret);
+    // useEffect(() => {
+    //   setId(props.id);
+    //   setName(props.name);
+    //   setUsername(props.owner);
+    //   setType(props.type);
+    //   setDescription(props.description);
+    // },[props.id,props.name,props.owner,props.type,props.description]);
 
     const dispatch=useDispatch();
 
@@ -53,7 +60,7 @@ export default function EditPop(props) {
             }}></input>
         </div>
         <p className="Owner_name">Owner</p>
-        <input  id="ownerInput" className="owner_input" name="owner" type="text" placeholder="Owner"  value={username}
+        <input  id="ownerInput" className="owner_input" name="username" type="text" placeholder="Owner"  value={username}
             onChange={(e) => {
               setUsername(e.target.value);
             }} ></input>
@@ -78,7 +85,7 @@ export default function EditPop(props) {
         <button type="submit" className="create_button_rose" 
            id="createBtn"
            onClick={()=>{
-            dispatch(updateSafe({id:id,name:name,username:username,type:type,description:description,}));
+            dispatch(updateSafe({id:id,name:name,username:username,type:type,description:description,secret:secret,}));
             close();
            }}
         >Update</button>

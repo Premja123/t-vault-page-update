@@ -15,19 +15,18 @@ export const userSlice=createSlice({
       
             // setActiveId:(state,action)=>{
             //   state.activeId=action.payload;
-              
             // },
             setCurId: (state, action) => {
               state.curId = action.payload;
             },
 
           addUser:(state, action)=>{
-state.value.push(action.payload);
+          state.value.push(action.payload);
           },
          
           updateSafe: (state, action) => {
-            state.value.forEach((user,index) =>{
-           
+            console.log(action.payload.id);
+            state.value.forEach((user, index) => {
               if (user.id === action.payload.id) {
                 state.value.splice(index, 1, action.payload);
               }
