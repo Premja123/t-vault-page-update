@@ -23,16 +23,16 @@ export default function CreateNewSafe() {
   const dispatch=useDispatch();
 
 
-  const[blankpage,setBlankpage]=useState('add_button_1');
-  const updateBlank=()=>{
-    setBlankpage('add_buttonupdating');
-  }
+  // const[blankpage,setBlankpage]=useState('add_button_1');
+  // const updateBlank=()=>{
+  //   setBlankpage('add_buttonupdating');
+  // }
 
 
   return (
     <div>
           <div>
-    <Popup trigger={<div><img src={Circle} alt="circle" className={blankpage} onClick={updateBlank}></img></div>}>
+    <Popup trigger={<div><img src={Circle} alt="circle" className="add_button_1"></img></div>}>
    {close=>(
     <form>
     <div className="newsafe_container" >

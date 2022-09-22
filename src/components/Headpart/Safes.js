@@ -1,3 +1,4 @@
+
 import React from "react";
 import Search from "./search.png";
 import Arrow from "./arrow.png";
@@ -22,11 +23,19 @@ import { useSelector } from "react-redux";
 import EditPop from "../Bodypart/EditPop";
 import BannerUpdate from "./BannerUpdate";
 import Add from './add_button_after.png';
-
+import {debounce} from 'lodash';
+import { useState } from "react";
 export default function Safes() {
-  function clearallthing(e) {
-    e.stopPropagation();
-  }
+  // function clearallthing(e) {
+  //   e.stopPropagation();
+  // }
+
+  const [searchItem, setNewItem]=useState('');
+
+
+const handleText=debounce((text)=>{
+setNewItem(text);
+},1000);
 
   const curId = useSelector((state) => state.users.curId);
 
@@ -50,7 +59,8 @@ export default function Safes() {
 
           <div className="searching">
             <img src={Search} alt="search_button" />
-            <input type="search" placeholder="Search" id="searchbar"></input>
+            <input type="search" placeholder="Search" id="searchbar"  onChange={
+      (event)=>{handleText(event.target.value);}}></input>
           </div>
         </div>
 
@@ -77,14 +87,23 @@ export default function Safes() {
               <div className="create_para">Create a Safe to get Started</div>
             </div>
           )}
-          <CreateNewSafe userList={userList} />
+
+{
+  (userList.length<=0) &&<div className="add_button_update">
+          <CreateNewSafe userList={userList} /></div>
+}
+
+{
+   (userList.length>0) &&<div className="add_button_1">
+   <CreateNewSafe userList={userList} /></div>
+}
         </div>
 
         <div>
           <p></p>
         </div>
 
-        <div className="bottom_container">
+        {/* <div className="bottom_container">
           <div className="bottom_child">
             {userList.map((user) => {
               return (
@@ -131,12 +150,73 @@ export default function Safes() {
               );
             })}
           </div>
+        </div> */}
+
+
+
+
+<div className="bottom_container">
+           <div className="bottom_child">
+           {userList.filter((user)=>{
+   if(user.name.toLowerCase().includes(searchItem.toLowerCase()))
+        {
+         return user.name;
+       }
+  }).map((user) => {
+              return (
+                <div
+                  key={user.id}
+                  className={user.id === curId.id ? "Activeone" : "NoActive"}
+                  onClick={() => {
+                    dispatching(setCurId({ id: user.id }));
+                  }}
+                >
+          
+                  <div className="listing_all">
+                    <div className="input_first">
+                      <img
+                        src={Icon}
+                        className="banner_button"
+                        alt="icon"
+                      ></img>
+                       <div className="username">
+                      <p>{user.name}</p>
+                      <span>Last Updated: a few seconds ago </span>
+                      </div>
+
+                    </div>
+                    <div className="input_second">
+                      <EditPop
+                        id={user.id}
+                        name={user.name}
+                        username={user.username}
+                        type={user.type}
+                        description={user.description}
+                        secret={user.secret}
+                      
+                      />
+                      <img
+                        src={Delete}
+                        className="delete_button"
+                        alt="delete"
+                        onClick={() => {
+                          dispatching(deleteUser({ id: user.id }));
+                        }}
+                      ></img>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
+
+
       </div>
-
+    
       <div className="safes_right_container">
-        <BannerUpdate />
-
+        
+      <BannerUpdate/>
         <div className="nav_2">
           <div className="nav_left">
             <div className="for_focusing active">
@@ -157,24 +237,22 @@ export default function Safes() {
         </div>
      
         <div>
-          {/* {secretList.map((value, index) => {
+          {secretList.map((value) => {
             return (
-              secretList.length !== 0 ||
-              (value.id === curId.id && value.secret.length > 0 && (
-                <div key={index}>
-                  <span id="secretsCount">{value.secret.length} Secrets</span>
-                </div>
+              (value.id === curId.id && value.secret.length >= 0 && (
+               <div className="secretsCount">   <span id="secretsCount">{value.secret.length} Secrets</span></div>
               ))
+            
             );
-          })} */}
+          })}
         </div>
-        {/* <span id="secretsCount">{value.secret.length} Secrets</span> */}
-
+        
            
         <div>
-        
+        {secretList.map((value) => {
+            return (
+         (value.id === curId.id && value.secret.length === 0 && (
             <div>
-           
               <div className="total_container">
                 <div className="file_document">
                   <img src={File_img} alt="file_img"></img>
@@ -194,13 +272,45 @@ export default function Safes() {
 
                 <div className="add_button"></div>
                 <img src={Add}  alt="add"  className="add_button_bottom" /> 
-                {/* onClick={updateBlank} className={blankpage} */}
               </div>
             </div>
-      
+             ))
+             );
+         })}
+
+{
+  secretList.length ===0 &&
+<div>
+              <div className="total_container">
+                <div className="file_document">
+                  <img src={File_img} alt="file_img"></img>
+                </div>
+
+                <div>
+                  <p className="caption">
+                    {" "}
+                    Add a<span className="highlight"> Folder</span>
+                    and then you’ll be able to
+                  </p>
+                  <p className="caption">
+                    add <span className="highlight"> Secrets </span>
+                    to view them all here{" "}
+                  </p>
+                </div>
+
+                <div className="add_button"></div>
+                <img src={Add}  alt="add"  className="add_button_bottom" /> 
+              </div>
+            </div>
+
+}
+
+
+
           <CreateFolderPop curId={curId.id} />
 
-          <div>
+          <div className="secret_list_parent">
+          <div className="secret_list_child">
             {secretList.map((value, index) => {
               return value.id === curId.id ? (
                 <div key={index}>
@@ -214,11 +324,6 @@ export default function Safes() {
                               src={IconFolder}
                               alt=""
                             />
-                            {/* <img
-                          className="folderActive"
-                          src={folderActive}
-                          alt=""
-                        /> */}
                           </div>
                           <div className="secretDetails">
                             <p>{x}</p>
@@ -248,36 +353,10 @@ export default function Safes() {
               );
             })}
           </div>
-          {/* </div> */}
+          </div>
         </div>
               
-        
-        {/* <div className="secrets_count">
-        <p>0 Secrets</p>
-      </div>
-     
-      <div className="total_container">
-        <div className="file_document">
-          <img src={File_img} alt="file_img"></img>
-        </div>
-      
-        <div>
-          <p className="caption">
-            {" "}
-            Add a<span className="highlight"> Folder</span>
-            and then you’ll be able to
-          </p>
-          <p className="caption">
-            add <span className="highlight"> Secrets </span>
-            to view them all here{" "}
-          </p>
-        </div>
-
-        <div>
-
-            </div>
-      
-      </div> */}
+ 
       </div>
     </div>
   );

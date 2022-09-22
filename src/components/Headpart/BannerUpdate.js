@@ -33,13 +33,16 @@ export default function BannerUpdate() {
         //   </span>
         // </div>
         <div className="total_card">
+          <div className='total_scroll'>
         {" "}
         <div className="no_safe_card">
           No Safes Created yet
+          </div>
           <div className="description">
             Create a Safe to see your secrets, folders and permissions here
           </div>
-        </div>{" "}
+       
+        </div>
       </div>
       ) : (
         ""

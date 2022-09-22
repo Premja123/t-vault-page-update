@@ -2,7 +2,7 @@
 header {
     width: auto;
     height: 70px;
-    padding: 0 140px;
+    padding: 0px 220px;
     align-items: center;
     background-color: #151820;
     box-shadow: 0 0.5rem 2.5rem 0 rgb(226 0 116 / 100%);
@@ -60,13 +60,14 @@ header {
     display: flex;
     align-items: center;
     color: #fff;
+    padding-top: 0.4rem;
   }
   .doc p,
   .prof p {
     padding-left: 0.8rem;
     padding-right: 1rem;
     padding-bottom: 0.4rem;
-    padding-top: 0.2rem;
+    padding-top: 0.1rem;
     /* font-weight: bold; */
   }
   .arrow img {
@@ -145,7 +146,7 @@ header {
   .system {
     width: 300px;
     height: 250px;
-    margin: 80px 100px 0px 70px;
+    margin: 90px 100px 0px 70px;
     padding: 30px 22px 0px 4px;
     object-fit: contain;
   }
@@ -231,16 +232,24 @@ header {
     padding-top: 0rem;
   }
   .total_card{
-    position: fixed;
-    top:0;
+     position: absolute;
+    top:0; 
     padding-left: 15rem;
     padding-top: 12.5rem;
     font-size: 18px;
     font-size:20px;
+    width:27%;
+    display: flex;
+    flex-direction: column;
   };
+
   .no_safe_card{
     color:white;
-   
+  }
+
+  .total_scroll{
+    height: 40rem;
+    
   }
   .description{
     color:#c4c4c4;
@@ -257,6 +266,7 @@ header {
   top:0;
   padding-top: 15.5rem;
   padding-left: 15rem;
+  width:27%;
 }
 
   .nav_2 {
@@ -341,6 +351,7 @@ header {
   
 .Activeone{
 background-image: linear-gradient(to right, #72134b, #1d212c);
+
 }
 .NoActive{
   background-color:  #1d212c;
@@ -351,6 +362,8 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
     align-items: center;
     justify-content: space-between;
     /* width:10rem; */
+    box-sizing: border-box;
+    height:5rem;
   }
   /* .listing_all p{
     padding-left: 1.5rem;
@@ -397,6 +410,7 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
     justify-content: space-between;
     background-color: #1d212c;
     align-items: center;
+    height:4.5rem;
   }
 
   .secretName{
@@ -445,11 +459,15 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
   display: none;
 }
 
-.secretsCount{
+/* .secretsCount{
   color:white;
   font-weight: bolder;
   position: absolute;
   top:0;
+} */
+
+.secretsCount{
+  margin: 0.5rem;
 }
 
 .visible{
@@ -471,4 +489,38 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
 .username p{
   margin: 0rem;
   font-size: 12px;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.secret_list_parent::-webkit-scrollbar {
+  display: none;
+}
+
+
+.secret_list_parent{
+  height:28.3rem;
+  overflow-y: scroll;
+}
+.secret_list_child{
+  height:80rem;
 }
