@@ -1,10 +1,10 @@
 import React from 'react'
 import Popupfirst from 'reactjs-popup';
 import './createform.css';
-import Add from './add_button_after.png';
+// import Add from './add_button_after.png';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addSecret} from '../features/Users';
+import { addSecret} from '../features/Reducer';
 import FolderPlus from './folder_update.png';
 import { v4 as uuid } from "uuid";
 
@@ -15,10 +15,10 @@ export default function CreateFolderPop(props) {
     const [secret, setSecret] = useState([]);
   const dispatch=useDispatch();
 
-  const[blankpage,setBlankpage]=useState('add_button_bottom');
-  const updateBlank=()=>{
-    setBlankpage('add_button_bottom_update');
-  }
+  // const[blankpage,setBlankpage]=useState('add_button_bottom');
+  // const updateBlank=()=>{
+  //   setBlankpage('add_button_bottom_update');
+  // }
 
   const[blankpagefolder,setBlankpagefolder]=useState('top_folder');
   const updateBlankfolder=()=>{
@@ -30,7 +30,7 @@ export default function CreateFolderPop(props) {
          <form>
          {/* onClick={updateBlank} className={blankpage} */}
 
-      <Popupfirst trigger={<div><img src={Add}  alt="add"  onClick={updateBlank} className={blankpage} /> 
+      <Popupfirst trigger={<div>
     <img src={FolderPlus} alt="folderplus" className={blankpagefolder} onClick={updateBlankfolder}></img></div>} >
 
        {closing=>(

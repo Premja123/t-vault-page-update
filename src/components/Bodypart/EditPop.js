@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup'
 import React from 'react';
 import Edit from './edit-xxl.png';
 import { useState} from 'react';
-import { updateSafe } from '../features/Users';
+import { updateSafe } from '../features/Reducer';
 import { useDispatch } from 'react-redux';
 
 export default function EditPop(props) {

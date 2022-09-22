@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup'
 import Circle from "./circle.png";
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addUser, setCurId} from '../features/Users';
+import { addUser, setCurId} from '../features/Reducer';
 import { useState } from 'react';
 import { v4 as uuid } from "uuid";
 

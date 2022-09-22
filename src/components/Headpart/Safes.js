@@ -12,50 +12,27 @@ import IconFolder from "./icon_folder.png";
 import File_img from "./file_img.png";
 import CreateNewSafe from "../Bodypart/CreateNewSafe";
 import CreateFolderPop from "../Bodypart/CreateFolderPop";
-import { deleteUser, setCurId } from "../features/Users";
+import { deleteUser, setCurId } from "../features/Reducer";
 // import One_finger from "./one-finger-xxl.png";
 import { useDispatch } from "react-redux";
-import { removeSecret } from "../features/Users";
+import { removeSecret } from "../features/Reducer";
 // import {v4 as uuidV4} from "uuid";
 //import CreateFolderPop from "../FolderRight/CreateFolderPop";
 import { useSelector } from "react-redux";
-// import {useState} from 'react';
 import EditPop from "../Bodypart/EditPop";
 import BannerUpdate from "./BannerUpdate";
+import Add from './add_button_after.png';
 
 export default function Safes() {
-  //const [count,setUpdate]=useState(0);
-  //const[count,setCount]=useState(0);
-  // function countincrease(){
-  //   setCount(count+1);
-  // }
+  function clearallthing(e) {
+    e.stopPropagation();
+  }
 
   const curId = useSelector((state) => state.users.curId);
 
   const dispatching = useDispatch();
   const userList = useSelector((state) => state.users.value);
   const secretList = useSelector((state) => state.users.value);
-  // const safesList = useSelector((state) => state.users.value);
-  // const userListing=useSelector((state)=>state.users.value1);
-
-  // const[count,setCount]=useState(0);
-  // const [result, setResult] = useState(
-  //   useSelector((state) => state.users.value)
-  // );
-
-  // const handleChange = (e) => {
-  //   const filter = userList.filter((value) => {
-  //     return value.name.toLowerCase().includes(e.target.value.toLowerCase());
-  //   });
-
-  //   if (e.target.value === "") {
-  //     console.log(userList);
-  //     setResult(userList);
-  //   } else {
-  //     setResult(filter);
-  //   }
-  // };
-
   return (
     <div className="safes">
       <div className="safes_left_container">
@@ -125,7 +102,10 @@ export default function Safes() {
                         className="banner_button"
                         alt="icon"
                       ></img>
+                      <div className="username">
                       <p>{user.name}</p>
+                      <span>Last Updated: a few seconds ago </span>
+                      </div>
                     </div>
                     <div className="input_second">
                       <EditPop
@@ -141,7 +121,7 @@ export default function Safes() {
                         src={Delete}
                         className="delete_button"
                         alt="delete"
-                        onClick={() => {
+                        onClick={(e) => { clearallthing(e);
                           dispatching(deleteUser({ id: user.id }));
                         }}
                       ></img>
@@ -175,9 +155,9 @@ export default function Safes() {
             <div>{/* <img src={Folder} alt="fold_img" /> */}</div>
           </div>
         </div>
-        <p>
+     
         <div>
-          {secretList.map((value, index) => {
+          {/* {secretList.map((value, index) => {
             return (
               secretList.length !== 0 ||
               (value.id === curId.id && value.secret.length > 0 && (
@@ -186,15 +166,15 @@ export default function Safes() {
                 </div>
               ))
             );
-          })}
+          })} */}
         </div>
-        </p>
-   
+        {/* <span id="secretsCount">{value.secret.length} Secrets</span> */}
 
+           
         <div>
-          {secretList.length === 0 && (
+        
             <div>
-              <span id="secretsCount">0 Secrets</span>
+           
               <div className="total_container">
                 <div className="file_document">
                   <img src={File_img} alt="file_img"></img>
@@ -213,9 +193,11 @@ export default function Safes() {
                 </div>
 
                 <div className="add_button"></div>
+                <img src={Add}  alt="add"  className="add_button_bottom" /> 
+                {/* onClick={updateBlank} className={blankpage} */}
               </div>
             </div>
-          )}
+      
           <CreateFolderPop curId={curId.id} />
 
           <div>
@@ -240,7 +222,7 @@ export default function Safes() {
                           </div>
                           <div className="secretDetails">
                             <p>{x}</p>
-                            {/* <span id="lastUpdated">Last Updated: a day ago</span> */}
+                            <span id="lastUpdated">Last Updated: a few seconds ago</span>
                           </div>
                         </div>
                         <div className="remove">
@@ -268,7 +250,8 @@ export default function Safes() {
           </div>
           {/* </div> */}
         </div>
-
+              
+        
         {/* <div className="secrets_count">
         <p>0 Secrets</p>
       </div>

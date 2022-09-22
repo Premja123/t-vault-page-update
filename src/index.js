@@ -5,7 +5,7 @@ import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import {configureStore} from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import usersReducer from './components/features/Users';
+import usersReducer from './components/features/Reducer';
 
 const store=configureStore({
   reducer:{

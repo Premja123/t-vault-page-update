@@ -6,16 +6,11 @@ export const userSlice=createSlice({
      name: "users",
     initialState:{
       value:[],
-      // value1:[],
-      // activeId:"",
       curId: "",
     },
    
     reducers:{
       
-            // setActiveId:(state,action)=>{
-            //   state.activeId=action.payload;
-            // },
             setCurId: (state, action) => {
               state.curId = action.payload;
             },
@@ -33,10 +28,19 @@ export const userSlice=createSlice({
             });
           },
 
-          deleteUser:(state,action)=>{
-           state.value=state.value.filter((user)=>user.id !== action.payload.id);
-          },
+          // deleteUser:(state,action)=>{
+          //  state.value=state.value.filter((user)=>user.id !== action.payload.id);
+          //  state.curId=state.value[0].id;
+          // },
         
+          deleteUser: (state, action) => {
+            state.value.forEach((user, index) => {
+              if (user.id === action.payload.id) {
+                state.value.splice(index, 1);
+              }
+            });
+            state.curId = state.value[0];
+          },
 
            addSecret: (state, action) => {
             state.value.forEach((user) => {
@@ -59,13 +63,6 @@ export const userSlice=createSlice({
     },
 });
 
- // addUserfolder:(state, action)=>{
-          //   state.value1.push(action.payload);
-          //             },
-
-  // deleteUserfolder:(state,action)=>{
-          //   state.value1=state.value1.filter((user)=>user.id !== action.payload.id);
-          //  },
 
 export const {addUser,addUserfolder,deleteUser,deleteUserfolder,updateSafe, addSecret,  setCurId,
   removeSecret,}=userSlice.actions;

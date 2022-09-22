@@ -352,9 +352,9 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
     justify-content: space-between;
     /* width:10rem; */
   }
-  .listing_all p{
+  /* .listing_all p{
     padding-left: 1.5rem;
-  }
+  } */
   .banner_button{
     width:30px;
     height:30px;
@@ -364,15 +364,15 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
   }
 
   .edit_button{
-    width:15px;
-    height:15px;
+    width:12px;
+    height:12px;
     /* padding-left: 12rem; */
   }
 
   .delete_button{
-    width:15px;
-    height:15px;
-    padding-left: 2rem;
+    width:12px;
+    height:12px;
+    padding-left: 1rem;
     padding-right: 2rem;
 
   }
@@ -382,10 +382,10 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
     align-items: center;
   }
 
-  .input_first p{
+  /* .input_first p{
   padding: 0.5rem 0.5rem 1rem 1rem;
 
-  }
+  } */
 
  .input_second{
     display: flex;
@@ -405,6 +405,14 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
 
   .secretDetails{
     padding-left: 1.5rem;
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secretDetails p{
+ font-size: 12px;
+ margin:0rem;
   }
 
   .banner_button_folder{
@@ -442,4 +450,25 @@ background-image: linear-gradient(to right, #72134b, #1d212c);
   font-weight: bolder;
   position: absolute;
   top:0;
+}
+
+.visible{
+  display: block;
+}
+
+.notvisible{
+  display: block;
+}
+
+.username{
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.8rem;
+}
+
+.username p{
+  margin: 0rem;
+  font-size: 12px;
 }
