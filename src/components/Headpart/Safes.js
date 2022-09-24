@@ -1,11 +1,12 @@
-
+import Popup from 'reactjs-popup'
+import Circle from "./circle.png";
 import React from "react";
 import Search from "./search.png";
 import Arrow from "./arrow.png";
 import Icon from "./icon_image.png";
 import Delete from "./delete-xxl.png";
 import System from "./System.png";
-
+import AddDisable from './add.png';
 // import Banner_img from "./Banner_img.png";
 import IconFolder from "./icon_folder.png";
 // import Circle from "./circle.png";
@@ -22,13 +23,15 @@ import { removeSecret } from "../features/Reducer";
 import { useSelector } from "react-redux";
 import EditPop from "../Bodypart/EditPop";
 import BannerUpdate from "./BannerUpdate";
-import Add from './add_button_after.png';
 import {debounce} from 'lodash';
 import { useState } from "react";
+import CreateFolderAdd from "../Bodypart/CreateFolderAdd";
+import PlusfolderDiable from './folder-plus 1.png';
+
 export default function Safes() {
-  // function clearallthing(e) {
-  //   e.stopPropagation();
-  // }
+  function clearallthing(e) {
+    e.stopPropagation();
+  }
 
   const [searchItem, setNewItem]=useState('');
 
@@ -62,6 +65,7 @@ setNewItem(text);
             <input type="search" placeholder="Search" id="searchbar"  onChange={
       (event)=>{handleText(event.target.value);}}></input>
           </div>
+
         </div>
 
         {/* <div className="foot_part">
@@ -79,24 +83,33 @@ setNewItem(text);
                   <p>Create New Safe</p>
                 </div>
               </div> */}
-
+          
         <div className="container_second">
-          {userList.length <= 0 && (
+
+        {
+  userList.length > 0 &&
+  <div>
+<Popup trigger={<div><img src={Circle} alt="circle" className="add_button_update"></img></div>}>
+ {(close)=> <CreateNewSafe  close={close}  />    }   
+ </Popup>
+  </div>
+}
+
+
+        {userList.length <= 0 && (
             <div>
               <img src={System} className="system" alt="system_logo"></img>
               <div className="create_para">Create a Safe to get Started</div>
-            </div>
+           
+ <Popup trigger={<div><img src={Circle} alt="circle" className="add_button_1"></img></div>}>
+ {(close)=> <CreateNewSafe  close={close}  />    }   
+ </Popup>
+ </div>
           )}
 
-{
-  (userList.length<=0) &&<div className="add_button_update">
-          <CreateNewSafe userList={userList} /></div>
-}
 
-{
-   (userList.length>0) &&<div className="add_button_1">
-   <CreateNewSafe userList={userList} /></div>
-}
+
+
         </div>
 
         <div>
@@ -154,16 +167,20 @@ setNewItem(text);
 
 
 
-
 <div className="bottom_container">
            <div className="bottom_child">
+
            {userList.filter((user)=>{
    if(user.name.toLowerCase().includes(searchItem.toLowerCase()))
-        {
+        { 
          return user.name;
        }
+
+console.log(searchItem);
+console.log(user.name);
   }).map((user) => {
               return (
+                
                 <div
                   key={user.id}
                   className={user.id === curId.id ? "Activeone" : "NoActive"}
@@ -171,7 +188,17 @@ setNewItem(text);
                     dispatching(setCurId({ id: user.id }));
                   }}
                 >
+       
+                   {/* {
+          (searchItem!=user.name) && 
           
+          
+            <div>
+            "no data found"
+            </div>
+            
+          } */}
+         
                   <div className="listing_all">
                     <div className="input_first">
                       <img
@@ -185,6 +212,7 @@ setNewItem(text);
                       </div>
 
                     </div>
+                  
                     <div className="input_second">
                       <EditPop
                         id={user.id}
@@ -199,7 +227,7 @@ setNewItem(text);
                         src={Delete}
                         className="delete_button"
                         alt="delete"
-                        onClick={() => {
+                        onClick={(e) => { clearallthing(e)
                           dispatching(deleteUser({ id: user.id }));
                         }}
                       ></img>
@@ -215,8 +243,8 @@ setNewItem(text);
       </div>
     
       <div className="safes_right_container">
-        
       <BannerUpdate/>
+      
         <div className="nav_2">
           <div className="nav_left">
             <div className="for_focusing active">
@@ -228,11 +256,28 @@ setNewItem(text);
             </div>
           </div>
           <div className="nav_right">
-            <div className="for_focus">
-              <p>Add Folder</p>
-            </div>
+            
+            {
+               userList.length===0 &&
+               <div className="for_focus">
+                     <p >Add Folder</p>
+               <img src={PlusfolderDiable} alt="disablefolder"/>
+               </div>
+            }
+            {
+              userList.length>0 &&
+              <div className="for_focus">
+              <p className='color_text'>Add Folder</p>
+              <CreateFolderPop curId={curId.id} />
+              </div>
+            }
+            
 
-            <div>{/* <img src={Folder} alt="fold_img" /> */}</div>
+            <div>{/* <img src={Folder} alt="fold_img" /> */}
+            
+            
+
+            </div>
           </div>
         </div>
      
@@ -249,6 +294,36 @@ setNewItem(text);
         
            
         <div>
+
+
+        {userList.length===0 &&
+            <div>
+              <div className="total_container">
+                <div className="file_document">
+                  <img src={File_img} alt="file_img"></img>
+                </div>
+
+                <div className='caption_center'>
+                  <p className="caption">
+                    {" "}
+                    Add a<span className="highlight"> Folder</span>
+                    and then you’ll be able to
+                  </p>
+                  <p className="caption">
+                    add <span className="highlight"> Secrets </span>
+                    to view them all here{" "}
+                  </p>
+                </div>
+
+                <div className="add_button_disable">
+                <img src={AddDisable} alt="adddisable"></img>
+                </div>
+             
+              </div>
+            </div>
+         }
+
+          
         {secretList.map((value) => {
             return (
          (value.id === curId.id && value.secret.length === 0 && (
@@ -258,7 +333,7 @@ setNewItem(text);
                   <img src={File_img} alt="file_img"></img>
                 </div>
 
-                <div>
+                <div className='caption_center'>
                   <p className="caption">
                     {" "}
                     Add a<span className="highlight"> Folder</span>
@@ -271,22 +346,22 @@ setNewItem(text);
                 </div>
 
                 <div className="add_button"></div>
-                <img src={Add}  alt="add"  className="add_button_bottom" /> 
+               <CreateFolderAdd curId={curId.id} />
               </div>
             </div>
              ))
              );
          })}
 
-{
-  secretList.length ===0 &&
+
+{/* {secretList.length ===0 &&
 <div>
               <div className="total_container">
                 <div className="file_document">
                   <img src={File_img} alt="file_img"></img>
                 </div>
 
-                <div>
+                <div className='caption_center'>
                   <p className="caption">
                     {" "}
                     Add a<span className="highlight"> Folder</span>
@@ -299,15 +374,16 @@ setNewItem(text);
                 </div>
 
                 <div className="add_button"></div>
-                <img src={Add}  alt="add"  className="add_button_bottom" /> 
+                {/* <img src={Add}  alt="add"  className="add_button_bottom" />  */}
+                {/* <CreateFolderAdd curId={curId.id} />
               </div>
             </div>
 
-}
+}  */}
 
 
 
-          <CreateFolderPop curId={curId.id} />
+         
 
           <div className="secret_list_parent">
           <div className="secret_list_child">

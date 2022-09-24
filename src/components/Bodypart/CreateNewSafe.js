@@ -1,16 +1,15 @@
 import Iconsafe from './icon_image.png';
 import './createform.css';
-import Popup from 'reactjs-popup'
-import Circle from "./circle.png";
+// import Popup from 'reactjs-popup'
+
+// import Circle from "./circle.png";
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser, setCurId} from '../features/Reducer';
 import { useState } from 'react';
 import { v4 as uuid } from "uuid";
 
-export default function CreateNewSafe() {
-
-
+export default function CreateNewSafe(props) {
   const uid = uuid();
   const id = uid.slice(0, 6);
   const[name,setName]=useState("");
@@ -32,8 +31,8 @@ export default function CreateNewSafe() {
   return (
     <div>
           <div>
-    <Popup trigger={<div><img src={Circle} alt="circle" className="add_button_1"></img></div>}>
-   {close=>(
+    {/* <Popup trigger={<div><img src={Circle} alt="circle" className="add_button_1"></img></div>}> */}
+   {/* {close=>( */}
     <form>
     <div className="newsafe_container" >
     <div className="model_container">
@@ -51,10 +50,10 @@ export default function CreateNewSafe() {
         </div> 
         <div>
         <p className="safe_name">Safe Name</p>
-        <input className="name_input"   id="safeNameInput" name="safeName" type="text" placeholder="Safe Name"  value={name} onChange={(event)=>{setName(event.target.value);}} ></input>
+        <input className="name_input"   id="safeNameInput" name="safeName" type="text" placeholder="Safe Name" maxLength={20} value={name} onChange={(event)=>{setName(event.target.value);}} required ></input>
         </div>
         <p className="Owner_name">Owner</p>
-        <input className="owner_input" id="ownerInput" name="username" type="text" placeholder="Owner" value={username} onChange={(event)=>{setUsername(event.target.value);}}></input>
+        <input className="owner_input" id="ownerInput" name="username" type="text" placeholder="Owner" maxLength={20} value={username} onChange={(event)=>{setUsername(event.target.value);}}></input>
         <p className="type_of_block">Type</p>
         <select className="select_thing" id="typeInput" value={type} onChange={(e) => {
               setType(e.target.value);
@@ -63,20 +62,20 @@ export default function CreateNewSafe() {
             <option value="Other">Other</option>
         </select>
         <p className="description_area">Description</p>
-        <textarea id="descInput" rows="3" cols="50" name="description" className="textarea_description" placeholder="Description"  value={description} onChange={(event)=>{setDescription(event.target.value);}} ></textarea>
+        <textarea id="descInput" rows="3" cols="50" name="description" className="textarea_description" placeholder="Description" maxLength={70} value={description} onChange={(event)=>{setDescription(event.target.value);}} ></textarea>
         <p className="condition">Please add a minimum of 10 characters</p>
         <div>
         <div className="buttons"> 
-        <button type="button" className="cancel_button"  onClick={()=>{close();}}>Cancel</button>
+        <button type="button" className="cancel_button"  onClick={()=>{ props.close();}}>Cancel</button>
 
         {
-          (name.length<=10 || username.length<=10 || description.length<=10)&&
-          <button type="submit" className="create_button_grey"  onClick={()=>{close();}}>+ Create</button>
+          (name.length<=0 || username.length<=0 || description.length<=10)&&
+          <button type="submit" className="create_button_grey"  onClick={()=>{props.close();}}>+ Create</button>
 
         }
 
 {
-  (name.length>10 && username.length>10 && description.length>10) &&
+  (name.length>=3 && username.length>=3 && description.length>10) &&
     <button type="submit" className="create_button_rose" onClick={()=>{dispatch(addUser({
       id:id,
       name,
@@ -86,19 +85,20 @@ export default function CreateNewSafe() {
       secret:secret,
       // active:active,
     }));
+    
     dispatch(
       setCurId({
         id: id,
       })
     );
-    
-    close();
+    props.close();
+   
     setName(' ');
     setUsername(' ');
     setType(' ');
     setDescription(' ');
-
     }} 
+
      >+ Create</button>
   }
         </div>
@@ -108,8 +108,8 @@ export default function CreateNewSafe() {
     </div>
 </div>
 </form>
-  )}
-   </Popup> 
+  {/* )} */}
+   {/* </Popup>  */}
 
           </div>
     </div>

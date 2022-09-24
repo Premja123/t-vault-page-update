@@ -39,7 +39,8 @@ export const userSlice=createSlice({
                 state.value.splice(index, 1);
               }
             });
-            state.curId = state.value[0];
+            // state.curId = state.value[0];
+            state.curId=state.value.length>0 ? state.value[state.value.length-1] : "";
           },
 
            addSecret: (state, action) => {
